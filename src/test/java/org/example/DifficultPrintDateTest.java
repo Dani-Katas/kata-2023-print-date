@@ -4,16 +4,16 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Date;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class DifficultPrintDateTest {
 
     @Test
     void printCurrentDate() {
+        Date expectedDate = new Date(0);
         DifficultPrintDateTestable printDate = new DifficultPrintDateTestable();
+        printDate.mockActualDateTo(expectedDate);
 
         printDate.printCurrentDate();
 
-        assertEquals(new Date(0), printDate.getArgumentCalled());
+        printDate.expectToHaveBeenCalledWith(expectedDate);
     }
 }
