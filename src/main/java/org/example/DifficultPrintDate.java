@@ -4,6 +4,14 @@ import java.util.Date;
 
 public class DifficultPrintDate {
     public void printCurrentDate() {
-      System.out.println(new Date());
+        print(getDate());
+    }
+
+    protected void print(Date date) {
+        System.out.println(date);
+    }
+
+    protected Date getDate() {
+        return new Date();
     }
 }
