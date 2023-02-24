@@ -20,17 +20,18 @@ public class PrintDateTest {
 
     printDate.printCurrentDate();
 
-    verify(printer).printLine("Thu Jan 01 01:00:00 CET 1970");
+    verify(printer).printLine("Thu Jan 01 00:00:00 WET 1970");
   }
 
   @Test
   public void printDate2() {
-    Calendar calendar = new StubCalendar(new Date(0)); // query (stub)
+    Date expectedDate = new Date(0);
+    Calendar calendar = new StubCalendar(expectedDate); // query (stub)
     SpyPrinter printer = new SpyPrinter(); // command (spy)
     PrintDate printDate = new PrintDate(calendar, printer);
 
     printDate.printCurrentDate();
 
-    assertEquals("Thu Jan 01 01:00:00 CET 1970", printer.argument());
+    printer.expectToHaveBeenCalledWith("Thu Jan 01 00:00:00 WET 1970");
   }
 }
